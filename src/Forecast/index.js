@@ -17,7 +17,8 @@ const Forecast = (props) => {
 
     return(
       <div className="forecastContainer">
-        {props.list && <p>5 Day Forecast: {weatherList}</p>}
+        <h2> 5 Day Forecast </h2>
+          {props.list && <p> {weatherList}</p>}
       </div>
     )
 }

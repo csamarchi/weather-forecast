@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import './style.css';
 
 const CurrentWeather = (props) =>{
 
     return(
-      <div>
+      <div className='weatherContainer'>
+        <h2> Todays Weather </h2>
        {props.city && <p>Location: {props.city}</p>}
        {props.temperature && <p>Temperature: {props.temperature}</p>}
        {props.high && <p>Todays Highs: {props.high}</p>}

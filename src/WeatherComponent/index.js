@@ -61,12 +61,12 @@ class WeatherComponent extends Component {
     return(
       <div>
         <Form getWeatherWithSearch = {this.getWeatherWithSearch} getForecastWithSearch = {this.getForecastWithSearch} />
-        <CurrentWeather
+        {this.state.temperature ? <CurrentWeather
           temperature= {this.state.temperature}
           high= {this.state.high}
           low= {this.state.low}
           description= {this.state.description}
-          />
+          /> : null}
         {this.state.list ? <Forecast list = {this.state.list} /> : null}
       </div>
     )

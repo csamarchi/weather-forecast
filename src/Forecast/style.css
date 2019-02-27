@@ -1,3 +1,5 @@
 .forecastContainer {
   font-family: "Futura";
+  float: right;
+  padding-right: 100px;
 }
