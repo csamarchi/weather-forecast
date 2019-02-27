@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import Form from '../Form';
 import CurrentWeather from '../CurrentWeather';
+import Forecast from '../Forecast';
 
-const myKey = '402d7e1be7d12edc9a150341e2cc2859';
 
 class WeatherComponent extends Component {
   constructor() {
     super();
     this.state = {
-      weather: []
+      weather: [],
+      forecast: [],
     }
   }
 
@@ -16,7 +17,13 @@ class WeatherComponent extends Component {
     const weather = await fetch('http://api.openweathermap.org/data/2.5/weather?zip=' + searchQuery + ',us&APPID=402d7e1be7d12edc9a150341e2cc2859');
     const response = await weather.json();
     return response;
+  }
 
+  getForecast = async (searchQuery) => {
+    const weather = await fetch('http://api.openweathermap.org/data/2.5/forecast?zip=' + searchQuery + ',us&APPID=402d7e1be7d12edc9a150341e2cc2859');
+    const response = await weather.json();
+    console.log(response);
+    return response;
   }
 
   getWeatherWithSearch = (searchQuery) => {
@@ -28,30 +35,38 @@ class WeatherComponent extends Component {
       low: weather.main.temp_min,
       description: weather.weather[0].description,
     })
-      console.log(weather);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
+  getForecastWithSearch = (searchQuery) => {
+    this.getForecast(searchQuery).then((forecast) => {
+      this.setState({
+        list: forecast.list
+      })
     }).catch((err) => {
       console.log(err);
     })
   }
 
   componentDidMount(){
-  this.getWeather().then((weather) => {
-    this.setState({weather: weather})
+  this.getForecast().then((forecast) => {
+    this.setState({list: forecast.list})
   }).catch((err) => {
     console.log(err);
   })
   }
 
-
   render() {
     return(
       <div>
-        <Form getWeatherWithSearch = {this.getWeatherWithSearch} />
+        <Form getWeatherWithSearch = {this.getWeatherWithSearch} getForecastWithSearch = {this.getForecastWithSearch} />
         <CurrentWeather
-          temperature={this.state.temperature}
-          high={this.state.high}
-          low={this.state.low}
-          description={this.state.description}
+          temperature= {this.state.temperature}
+          high= {this.state.high}
+          low= {this.state.low}
+          description= {this.state.description}
           />
       </div>
     )
@@ -59,3 +74,5 @@ class WeatherComponent extends Component {
 }
 
 export default WeatherComponent;
+
+// {this.state.weather ? <Forecast list = {this.state.list} /> : null}

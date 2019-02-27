@@ -1,0 +1,23 @@
+.form {
+  padding: 3px;
+  margin-left: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 1em;
+}
+
+.submit {
+  border-radius: 15%;
+  padding: 3px;
+  width: 70px;
+  font-family: "Futura";
+  background-color: #3c6fc1;
+  color: #FFF;
+  border-color: #3c6fc1;
+  font-size: 1em;
+}
+
+.submit:hover {
+  cursor: pointer;
+  background-color: #2d5699;
+}

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './style.css';
 
 class Form extends Component {
   constructor() {
@@ -12,6 +13,7 @@ class Form extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.getWeatherWithSearch(this.state.zipcode);
+    this.props.getForecastWithSearch(this.state.zipcode);
   }
 
   handleChange = (e) => {
@@ -23,8 +25,8 @@ class Form extends Component {
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input type='text' name='zipcode' placeholder='enter zipcode...' onChange={this.handleChange} />
-          <input type='submit' name='submit' />
+          <input className='form' type='text' name='zipcode' placeholder='enter zipcode...' onChange={this.handleChange} />
+          <input className='submit' type='submit' name='submit' />
         </form>
       </div>
     )
