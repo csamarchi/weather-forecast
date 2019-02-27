@@ -8,8 +8,7 @@ class WeatherComponent extends Component {
   constructor() {
     super();
     this.state = {
-      weather: [],
-      forecast: [],
+      forecast: []
     }
   }
 
@@ -22,7 +21,7 @@ class WeatherComponent extends Component {
   getForecast = async (searchQuery) => {
     const weather = await fetch('http://api.openweathermap.org/data/2.5/forecast?zip=' + searchQuery + ',us&APPID=402d7e1be7d12edc9a150341e2cc2859');
     const response = await weather.json();
-    console.log(response);
+    console.log(response, 'christine');
     return response;
   }
 
@@ -68,11 +67,10 @@ class WeatherComponent extends Component {
           low= {this.state.low}
           description= {this.state.description}
           />
+        {this.state.list ? <Forecast list = {this.state.list} /> : null}
       </div>
     )
   }
 }
 
 export default WeatherComponent;
-
-// {this.state.weather ? <Forecast list = {this.state.list} /> : null}

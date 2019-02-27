@@ -1,46 +1,26 @@
 import React, {Component} from 'react';
-
+import './style.css';
 
 const Forecast = (props) => {
-  console.log("TESTESTEST" + props.list)
+  const array = [4, 12, 20, 28, 36]
   const weatherList = props.list.map((day, i) => {
-    console.log(day);
-    return (
-          <div>
-            {props.list && <p>TESTEST: </p>}
-          </div>
-      )
+
+    if (array.includes(i)) {
+      return (
+            <div>
+              <p>{day.dt_txt}</p>
+              <p>{day.main.temp}</p>
+            </div>
+        )
+      }
     })
 
     return(
-      <div>
-      {props.list && <p>TESTEST: {weatherList}</p>}
+      <div className="forecastContainer">
+        {props.list && <p>5 Day Forecast: {weatherList}</p>}
       </div>
     )
 }
 
 
 export default Forecast;
-// {props.list && <p>Location: {props.list}</p>}
-
-// const Forecast = (props) => {
-//   const weatherList = this.props.list.map((day, i) => {
-//     console.log(day);
-//
-//     return(
-//       <div>
-//         <h1> Temperature: </h1>
-//       </div>
-//     )
-//   })
-//
-//   return(
-//     <div>
-//       <h1> 5 Day Forecast </h1>
-//       {weatherList}
-//     </div>
-//   )
-// }
-//
-//
-// export default Forecast;
