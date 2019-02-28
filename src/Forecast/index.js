@@ -5,11 +5,15 @@ const Forecast = (props) => {
   const array = [4, 12, 20, 28, 36]
   const weatherList = props.list.map((day, i) => {
 
+    function convertKelvin(kelvinTemp) {
+      return Math.floor((kelvinTemp - 273.15) * 9/5 + 32)
+    }
+
     if (array.includes(i)) {
       return (
             <div>
               <p>{day.dt_txt}</p>
-              <p>{day.main.temp}</p>
+              <p>{convertKelvin(day.main.temp)}</p>
             </div>
         )
       }

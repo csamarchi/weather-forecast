@@ -57,6 +57,7 @@ class WeatherComponent extends Component {
   })
   }
 
+
   render() {
     return(
       <div>
