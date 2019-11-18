@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './style.css';
 
 const CurrentWeather = (props) =>{
@@ -6,6 +6,7 @@ const CurrentWeather = (props) =>{
   function convertKelvin(kelvinTemp) {
     return Math.floor((kelvinTemp - 273.15) * 9/5 + 32)
   }
+
 
     return(
       <div className='weatherContainer'>
